@@ -4,13 +4,13 @@ const express = require("express");
 const html = require("html");
 const app = express();
 
-const home = require("./routes");
+const home = require("./src/routes/home");
 
-app.set("views", "./views");
+app.set("views", "./src/views");
 app.set("view engine", "ejs");
+
+app.use(express.static(`${__dirname}/src/public`));
 
 app.use("/", home);
 
-app.listen(3000, () => {
-  console.log("서버 가동");
-});
+module.exports = app;
